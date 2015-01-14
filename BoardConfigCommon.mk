@@ -46,6 +46,8 @@ BOARD_CUSTOM_BOOTIMG_MK := device/lge/g2-common/releasetools/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/lge/msm8974
 TARGET_KERNEL_ARCH := arm
 
+TARGET_GCC_VERSION_ARM := 4.9-sm
+
 BOARD_USES_ALSA_AUDIO:= true
 
 TARGET_BOOTLOADER_BOARD_NAME := galbi
