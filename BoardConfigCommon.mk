@@ -111,6 +111,9 @@ BOARD_BLUEDROID_VENDOR_CONF := device/lge/g2-common/bluetooth/vnd_g2.txt
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 # GPS
 TARGET_NO_RPC := true
 
