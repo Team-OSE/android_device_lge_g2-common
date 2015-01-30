@@ -167,7 +167,6 @@ on boot
     setprop net.tcp.buffersize.hspa     4094,87380,704512,4096,16384,110208
     setprop net.tcp.buffersize.hsupa    4094,87380,704512,4096,16384,110208
 
-on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -188,6 +187,18 @@ on boot
 
     chown system wifi /sys/module/bcmdhd/parameters/firmware_path
     chmod 0640 /sys/module/bcmdhd/parameters/firmware_path
+
+    chown system radio /sys/devices/virtual/input/lge_touch/touch_gesture
+	chmod 0664 /sys/devices/virtual/input/lge_touch/touch_gesture
+    chown root system /sys/devices/platform/tspdrv/nforce_timed
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    chmod 0664 /sys/devices/platform/tspdrv/nforce_timed
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+    restorecon /sys/devices/platform/tspdrv/nforce_timed
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
+    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
 
 # mpt partition permission change after mount
 on post-fs-data
@@ -311,22 +322,6 @@ on post-fs-data
     chmod 0220 /sys/devices/system/cpu/mfreq
     write /sys/module/msm_thermal/core_control/enabled 1
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
-
-    # Torch
-    chown system camera /sys/class/leds/led:flash_torch/brightness
-    chmod 0660 /sys/class/leds/led:flash_torch/brightness
-
-    chown system radio /sys/devices/virtual/input/lge_touch/touch_gesture
-	chmod 0664 /sys/devices/virtual/input/lge_touch/touch_gesture
-    chown root system /sys/devices/platform/tspdrv/nforce_timed
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    chmod 0664 /sys/devices/platform/tspdrv/nforce_timed
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
-    restorecon /sys/devices/platform/tspdrv/nforce_timed
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal
-    restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
 
 on charger
     trigger charger-fs
