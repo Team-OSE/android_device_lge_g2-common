@@ -189,6 +189,10 @@ on boot
     chown system wifi /sys/module/bcmdhd/parameters/firmware_path
     chmod 0640 /sys/module/bcmdhd/parameters/firmware_path
 
+    # Display color calibration
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
+
 # mpt partition permission change after mount
 on post-fs-data
     chown system system /mpt
@@ -319,11 +323,7 @@ on post-fs-data
     chown system radio /sys/devices/virtual/input/lge_touch/touch_gesture
 	chmod 0664 /sys/devices/virtual/input/lge_touch/touch_gesture
     chown root system /sys/devices/platform/tspdrv/nforce_timed
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown root system /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
     chmod 0664 /sys/devices/platform/tspdrv/nforce_timed
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal
-    chmod 0664 /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
     restorecon /sys/devices/platform/tspdrv/nforce_timed
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal
     restorecon /sys/devices/platform/kcal_ctrl.0/kcal_ctrl
